@@ -1,11 +1,11 @@
 package org.example.DAO;
 
 
-import org.example.model.ReceivedParameterModel;
+import org.example.model.ParameterModel;
 
 public interface ParameterDAO {
 
-    void handleArgs(ReceivedParameterModel<Integer> parameterModel);
+    void handleArgs(ParameterModel<Integer> parameterModel);
 
     void verifyIfAllMandatoryArgumentsWerePassed();
 }
