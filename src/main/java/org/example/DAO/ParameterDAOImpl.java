@@ -1,7 +1,7 @@
 package org.example.DAO;
 
 import org.example.model.Parameter;
-import org.example.model.ReceivedParameterModel;
+import org.example.model.ParameterModel;
 
 import java.security.InvalidParameterException;
 import java.util.Arrays;
@@ -17,7 +17,7 @@ public class ParameterDAOImpl implements ParameterDAO {
 
 
     @Override
-    public void handleArgs(ReceivedParameterModel<Integer> parameterModel) {
+    public void handleArgs(ParameterModel<Integer> parameterModel) {
         if (parameterModel.getPrefix() == 'g') {
             Parameter.setGenerations(parameterModel.getValue());
         } else if (parameterModel.getPrefix() == 'h') {
@@ -39,10 +39,10 @@ public class ParameterDAOImpl implements ParameterDAO {
             }
 
             if (parameterSplit[0].charAt(0) != 'p') {
-                ReceivedParameterModel<Integer> parameterModel = new ReceivedParameterModel<>(parameterSplit[0].charAt(0), Integer.parseInt(parameterSplit[1]));
+                ParameterModel<Integer> parameterModel = new ParameterModel<>(parameterSplit[0].charAt(0), Integer.parseInt(parameterSplit[1]));
                 handleArgs(parameterModel);
             } else {
-                ReceivedParameterModel<String> parameterModel = new ReceivedParameterModel<>(parameterSplit[0].charAt(0), parameterSplit[1]);
+                ParameterModel<String> parameterModel = new ParameterModel<>(parameterSplit[0].charAt(0), parameterSplit[1]);
                 Parameter.setPopulation(parameterModel.getValue());
             }
         });

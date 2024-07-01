@@ -2,13 +2,13 @@ package org.example.model;
 
 import java.util.Set;
 
-public class ReceivedParameterModel<T> {
+public class ParameterModel<T> {
     private static final Set<Character> POSSIBLE_PREFIXES = Set.of('g', 'h', 'p', 's', 'w');
     private static final Set<Character> POSSIBLE_VALUES_FOR_P = Set.of('0', '1', '#');
     private final char PREFIX;
     private final T VALUE;
 
-    public ReceivedParameterModel(char prefix, T value) {
+    public ParameterModel(char prefix, T value) {
         verifyValue(prefix, value);
 
         this.PREFIX = prefix;
@@ -47,7 +47,7 @@ public class ReceivedParameterModel<T> {
 
         if (prefix == 'p') {
             for (int i = 0; i < value.toString().length(); i++) {
-                if (!POSSIBLE_VALUES_FOR_P.contains(value.toString().charAt(i))) {
+                if (!POSSIBLE_VALUES_FOR_P.contains(value.toString().charAt(i)) && !value.toString().equals("RND")) {
                     throw new IllegalArgumentException("Not valid value: " + value);
                 }
             }
